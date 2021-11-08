@@ -1,5 +1,7 @@
 package com.bytehack.cryptotrack;
 
+import android.util.Pair;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,8 @@ import java.util.List;
 public class Trader {
 
     final String id; // Identifier for trader
-    final List<Coin> wallet = new ArrayList<>(); // Tolal holding of the trader
+
+    final List<Pair<String, Double>> wallet = new ArrayList<>(); // Total holding of the trader
 
     public Trader(String id) {
         this.id = id;
