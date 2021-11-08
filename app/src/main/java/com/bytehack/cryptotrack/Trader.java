@@ -15,4 +15,16 @@ public class Trader {
     public Trader(String id) {
         this.id = id;
     }
+
+    public void addCoin(String id, double value){
+        Pair<String, Double> coinToAdd = new Pair<String, Double>(id,value);
+        for(int i =0 ; i<wallet.size(); i++) {
+            Pair<String, Double> coin = wallet.get(i);
+            if (coin.first.equals(id)){
+                wallet.set(i, coinToAdd);
+                return;
+            }
+        }
+        wallet.add(coinToAdd);
+    }
 }
