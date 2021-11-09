@@ -17,14 +17,29 @@ public class Trader {
     }
 
     public void addCoin(String id, double value){
-        Pair<String, Double> coinToAdd = new Pair<String, Double>(id,value);
+        Pair<String, Double> coinToAdd;
         for(int i =0 ; i<wallet.size(); i++) {
             Pair<String, Double> coin = wallet.get(i);
             if (coin.first.equals(id)){
+                double total_value = coin.second + value;
+                coinToAdd = new Pair<String, Double>(id,total_value);
                 wallet.set(i, coinToAdd);
                 return;
             }
         }
+        coinToAdd = new Pair<String, Double>(id,value);
         wallet.add(coinToAdd);
+    }
+
+    public void sellCoin(String id, double value){
+        for(int i =0 ; i<wallet.size(); i++) {
+            Pair<String, Double> coin = wallet.get(i);
+            if (coin.first.equals(id) && coin.second>=value){
+                double final_value = coin.second - value;
+                Pair<String, Double> coinAfterSelling = new Pair<String, Double>(id,final_value);
+                wallet.set(i, coinAfterSelling);
+                return;
+            }
+        }
     }
 }
