@@ -16,7 +16,7 @@ public class Trader {
         this.id = id;
     }
 
-    public void addCoin(String id, double value){
+    public synchronized void addCoin(String id, double value){
         Pair<String, Double> coinToAdd;
         for(int i =0 ; i<wallet.size(); i++) {
             Pair<String, Double> coin = wallet.get(i);
@@ -31,7 +31,7 @@ public class Trader {
         wallet.add(coinToAdd);
     }
 
-    public void sellCoin(String id, double value){
+    public synchronized void removeCoin(String id, double value){
         for(int i =0 ; i<wallet.size(); i++) {
             Pair<String, Double> coin = wallet.get(i);
             if (coin.first.equals(id) && coin.second>=value){
